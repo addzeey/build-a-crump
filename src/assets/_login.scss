@@ -1,0 +1,38 @@
+@import "variables";
+.login-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 500px;
+    transform: translate(-50%, -50%);
+    width: auto;
+    width: fit-content;
+    padding: 3rem;
+    box-sizing: border-box;
+    height: 50%;
+    background-color: $grey-dark;
+    border: 1px solid $grey;
+    z-index: 99;
+    color: $lighter;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+
+    .twitch-btn {
+        background-color: $twitch-purple;
+        padding: 1rem;
+        font-weight: 600;
+        color: $lighter;
+        border: 2px solid $twitch-lighter;
+        transition: background-color 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $twitch-lighter;
+            color: $dark;
+        }
+    }
+}
