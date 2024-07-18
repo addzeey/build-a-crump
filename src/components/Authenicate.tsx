@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import "../assets/_login.scss";
-import { fetchUser, signInWithTwitch } from "../authentication";
+import { signInWithTwitch, useUserQuery } from "../authentication";
 import { useEffect } from "react";
 import { UserMetadata } from "@supabase/supabase-js";
 
@@ -10,12 +10,7 @@ export const Authenicate = () => {
             return signInWithTwitch();
         },
     });
-    const { data: user, error, isLoading } = useQuery({
-        queryKey: ['user'],
-        queryFn: () => {
-            return fetchUser();
-        },
-    })
+    const { data: user, error, isLoading } = useUserQuery();
     useEffect(() => {
         if(user) {
             console.log(user);

@@ -5,6 +5,7 @@ export type item = {
     icon: string;
 }
 export type CrumpData = {
+    map(arg0: (item: any, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
     body: item[];
     hair: item[];
     expression: item[];
@@ -12,6 +13,7 @@ export type CrumpData = {
     legs: item[];
     head: item[];
     accessory: item[];
+    effect: item[];
 };
 export type SelectData = {
     body: string;
@@ -21,4 +23,5 @@ export type SelectData = {
     legs: string;
     head: string;
     accessory: string;
+    effect: string;
 }

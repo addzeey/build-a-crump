@@ -27,7 +27,8 @@
             padding: 0.2rem;
             gap: 1rem;
             button {
-                width: 33.33%;
+                width: 50%;
+                font-size: 2rem;
                 cursor: pointer;
                 padding: 1rem;
                 background-color: $light;
@@ -251,5 +252,27 @@
     }
     img.hair-debug {
         z-index: 2;
+    }
+}
+.nameplate {
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 4rem;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem;
+
+    &:hover .name-change {
+        display: inline;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    .name-change {
+        display: none;
     }
 }
