@@ -205,25 +205,42 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
     }
-
-    img.base-crump {    
-        z-index: 1  ;
-    }
-    img.hair-crump {
-        z-index: 4;
-    }
+    // Accessories 
+    // Hair 
+    // Face
+    // Head
+    // Second accessories 
+    // Arms
+    // Body
+    // Feet
     img.legs-crump {
-        z-index: 2;
+        z-index: 1;
     }
-    img.head-crump {
-        z-index: 2;
+    img.base-crump {    
+        z-index: 2  ;
     }
-    img.face-crump {
+    img.acc2-crump {
         z-index: 3;
     }
-    img.arms-crump {
-        z-index: 2;
+    img.head-crump {
+        z-index: 4;
     }
+    img.face-crump {
+        z-index: 5;
+    }
+    img.hair-crump {
+        z-index: 6;
+    }
+    img.arms-crump {
+        z-index: 7;
+    }
+    img.acc-crump {
+        z-index: 8;
+    }
+    img.effect-crump {
+        z-index: 10;
+    }
+
 }
 .debug {
     background: $tertiary;

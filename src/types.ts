@@ -16,12 +16,13 @@ export type CrumpData = {
     effect: item[];
 };
 export type SelectData = {
-    body: string;
+    accessory: string;
     hair: string;
     expression: string;
-    arms: string;
-    legs: string;
     head: string;
-    accessory: string;
+    accessory2: string;
+    arms: string;
+    body: string;
+    legs: string;
     effect: string;
-}
+};
