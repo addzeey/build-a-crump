@@ -16,8 +16,9 @@ const defaultCrump: SelectData = {
     arms: "arms-1",
     legs: "legs-1",
     head: "head-1",
-    accessory: "accessory-1",
-    effect: "effect-1"
+    accessory: "default",
+    accessory2: "default",
+    effect: "default"
 }
 export const Builder = () => {
     const ref = useRef<HTMLDivElement>(null)
@@ -35,12 +36,13 @@ export const Builder = () => {
         toPng(ref.current, { cacheBust: true, })
             .then((dataUrl) => {
                 const link = document.createElement('a')
-                link.download = 'my-image-name.png'
+                link.download = 'my-crump.png'
                 link.href = dataUrl
                 link.click()
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 500);
+                
             })
             .catch((err) => {
                 console.log(err)
@@ -56,6 +58,7 @@ export const Builder = () => {
                 title: "Saving",
                 message: "Saving your Crump!"
             });
+            // eslint-disable-next-line react-hooks/rules-of-hooks
             useSaveCrump(crumpBody);
         } else {
             console.error("User not logged in, or another error");
@@ -74,10 +77,6 @@ export const Builder = () => {
 
     return (
         <section id="build">
-            <h1>Builder</h1>
-            <p className="debug">
-                {JSON.stringify(crumpBody)}
-            </p>
             <div className="build-wrap">
                 <Overlay updateCrump={handleSetCrumpUpdate} />
                 <div className="center-build">
@@ -92,8 +91,8 @@ export const Builder = () => {
             {
                 isLoading != false ? (
                     <Modal title={isLoading.title} message={isLoading.message} />
-                ) : isLoading ? (
-                    <Modal title={isLoading.title} message={isLoading.message} />
+                ) : userLoading ? (
+                    <Modal title={"Loading"} message={"Loading your save"} />
                 ) : null
             }
         </section>

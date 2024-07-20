@@ -17,16 +17,10 @@ import { Route as AuthCallbackImport } from './routes/auth/callback'
 
 // Create Virtual Routes
 
-const BuildLazyImport = createFileRoute('/build')()
 const IndexLazyImport = createFileRoute('/')()
 const AuthIndexLazyImport = createFileRoute('/auth/')()
 
 // Create/Update Routes
-
-const BuildLazyRoute = BuildLazyImport.update({
-  path: '/build',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/build.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -54,13 +48,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/build': {
-      id: '/build'
-      path: '/build'
-      fullPath: '/build'
-      preLoaderRoute: typeof BuildLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/auth/callback': {
       id: '/auth/callback'
       path: '/auth/callback'
@@ -82,7 +69,6 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  BuildLazyRoute,
   AuthCallbackRoute,
   AuthIndexLazyRoute,
 })
@@ -96,16 +82,12 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/build",
         "/auth/callback",
         "/auth/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
-    },
-    "/build": {
-      "filePath": "build.lazy.tsx"
     },
     "/auth/callback": {
       "filePath": "auth/callback.tsx"

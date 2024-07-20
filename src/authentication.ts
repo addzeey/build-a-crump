@@ -1,6 +1,7 @@
 import { createClient, UserMetadata } from "@supabase/supabase-js";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 import { SelectData } from "./types";
+import { Navigate } from "@tanstack/react-router";
 export const supabase = createClient(
 	import.meta.env.VITE_SUPABASE_URL,
 	import.meta.env.VITE_SUPABASE_KEY_ANON
@@ -45,5 +46,7 @@ export const signInWithTwitch = async () => {
 };
 export const signOut = async () => {
 	const { error } = await supabase.auth.signOut();
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	window.location.reload();
 	if (error) throw error;
 };

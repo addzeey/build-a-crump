@@ -36,8 +36,6 @@ section {
 }
 header {
     width: 100%;
-    padding: 1rem;
-    background-color: $primary; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,6 +48,7 @@ header {
         display: flex;
         gap: 10px;
         color: $lighter;
+        padding: 1rem;
     }
     .header-login {
         position: absolute;
@@ -100,13 +99,15 @@ header {
 }
 .primary-btn {
     color: $lighter;
-    background-color: $secondary;
+    background-color: $primary;
+    font-weight: bold;
     &.active {
-        background-color: $dark;
-        color: $lighter;
+        background-color: $light;
+        color: $dark;
     }
     &:hover {
-        background-color: $dark;
+        background-color: $secondary;
+        color: $light   ;
     }
 }
 img.auth-avatar {

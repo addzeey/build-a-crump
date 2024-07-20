@@ -1,14 +1,11 @@
-import { createLazyFileRoute, Outlet } from '@tanstack/react-router'
-import { Header } from '../components/Header'
-
+import { createLazyFileRoute } from '@tanstack/react-router'
+import {Builder} from '../components/Builder'
 export const Route = createLazyFileRoute('/')({
-    component: Index,
-})
-
-function Index() {
+  component: () => {
     return (
-        <div className="body-wrap">
-            <h1>homepage</h1>
-        </div>
+      <div className="body-wrap container">
+        <Builder />
+      </div>
     )
-}
+  }
+})

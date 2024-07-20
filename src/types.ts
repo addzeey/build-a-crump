@@ -3,6 +3,7 @@ export type item = {
     id: string;
     type: string;
     icon: string;
+    block: string;
 }
 export type CrumpData = {
     map(arg0: (item: any, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;

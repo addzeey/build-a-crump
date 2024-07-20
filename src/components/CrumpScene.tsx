@@ -4,6 +4,7 @@ import { UserMetadata } from "@supabase/supabase-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { SelectData } from "../types";
+import { Modal } from "./Modal";
 
 type Props = {
     data: SelectData;
@@ -24,10 +25,8 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
     });
     useEffect(() => {
         const { data } = props;
-        console.table(data);
-        
         setCrumpBuild(data);
-    }, [props]);
+    }, [props, user]);
     const changeName = () => {
         const name = prompt("Enter a name for your crump");
         if(name) {
@@ -37,6 +36,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
     return (
         <div className="crump">
             <div ref={ref} className="crump-export">
+            <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
             <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
             <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
             <img src={`/assets/images/crumps/hair/${crumpBuild.hair}.png`} alt="" className="crump-part hair-crump" />
