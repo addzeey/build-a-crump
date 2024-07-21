@@ -1,7 +1,6 @@
 import { createClient, UserMetadata } from "@supabase/supabase-js";
-import { QueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { SelectData } from "./types";
-import { Navigate } from "@tanstack/react-router";
 export const supabase = createClient(
 	import.meta.env.VITE_SUPABASE_URL,
 	import.meta.env.VITE_SUPABASE_KEY_ANON
@@ -37,6 +36,7 @@ export const signInWithTwitch = async () => {
 		provider: "twitch",
 		options: {
 			scopes: "user:read:email",
+			redirectTo: import.meta.env.VITE_REDIRECT_URL,
 		},
 	});
 	if (error) throw error;
