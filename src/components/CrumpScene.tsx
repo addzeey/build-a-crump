@@ -37,12 +37,12 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
             <div ref={ref} className={`crump-export crump-bg`} style={{backgroundImage: `url(/assets/images/crumps/background/${crumpBuild.background}.png)`}}>
             <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
             {
-                crumpBuild.effect != "default" ? (
+                crumpBuild.effect != "default" && crumpBuild.effect != "" ? (
                     <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
                 ) : null
             }
             {
-                crumpBuild.accessory != "default" ? (
+                crumpBuild.accessory != "default" && crumpBuild.accessory != "" ? (
                     <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
                 ) : null
             }
@@ -50,7 +50,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
             <img src={`/assets/images/crumps/face/${crumpBuild.expression}.png`} alt="" className="crump-part face-crump" />
             <img src={`/assets/images/crumps/head/${crumpBuild.head}.png`} alt="" className="crump-part head-crump" />
             {
-                crumpBuild.accessory2 != "default" ? (
+                crumpBuild.accessory2 != "default" && crumpBuild.accessory2 != "" ? (
                     <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory2}.png`} alt="" className="crump-part acc2-crump" />
                 ) : null
             }
