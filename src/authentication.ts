@@ -7,7 +7,6 @@ export const supabase = createClient(
 );
 
 const fetchUser = async () => {
-	console.log("fetching user");
 	const session = supabase.auth;	
 	const getSession = await session.getSession()
 	if (session && getSession && getSession.data.session) {
@@ -28,7 +27,6 @@ export const getSavedCrump = async (crumpData: SelectData) => {
 		data: { crump: JSON.stringify(crumpData) },
 	});
 	if (error) throw error;
-	console.log(data);
 };
 
 export const signInWithTwitch = async () => {
@@ -40,7 +38,6 @@ export const signInWithTwitch = async () => {
 		},
 	});
 	if (error) throw error;
-    console.log(data);
     
     return data;
 };

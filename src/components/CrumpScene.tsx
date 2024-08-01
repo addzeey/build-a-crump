@@ -36,12 +36,24 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
         <div className="crump">
             <div ref={ref} className={`crump-export crump-bg`} style={{backgroundImage: `url(/assets/images/crumps/background/${crumpBuild.background}.png)`}}>
             <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
-            <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
-            <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
+            {
+                crumpBuild.effect != "default" ? (
+                    <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
+                ) : null
+            }
+            {
+                crumpBuild.accessory != "default" ? (
+                    <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
+                ) : null
+            }
             <img src={`/assets/images/crumps/hair/${crumpBuild.hair}.png`} alt="" className="crump-part hair-crump" />
             <img src={`/assets/images/crumps/face/${crumpBuild.expression}.png`} alt="" className="crump-part face-crump" />
             <img src={`/assets/images/crumps/head/${crumpBuild.head}.png`} alt="" className="crump-part head-crump" />
-            <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory2}.png`} alt="" className="crump-part acc2-crump" />
+            {
+                crumpBuild.accessory2 != "default" ? (
+                    <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory2}.png`} alt="" className="crump-part acc2-crump" />
+                ) : null
+            }
             <img src={`/assets/images/crumps/arms/${crumpBuild.arms}.png`} alt="" className="crump-part arms-crump" />
             <img src={`/assets/images/crumps/body/${crumpBuild.body}.png`} alt="" className="crump-part base-crump" />
             <img src={`/assets/images/crumps/legs/${crumpBuild.legs}.png`} alt="" className="crump-part legs-crump" />
