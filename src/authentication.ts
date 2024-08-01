@@ -23,7 +23,7 @@ export function useUserQuery() {
 		staleTime: 1000 * 60 * 30
     });
 }
-export const useSaveCrump = async (crumpData: SelectData) => {
+export const getSavedCrump = async (crumpData: SelectData) => {
 	const { data, error } = await supabase.auth.updateUser({
 		data: { crump: JSON.stringify(crumpData) },
 	});

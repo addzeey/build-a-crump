@@ -15,6 +15,7 @@ export type CrumpData = {
     head: item[];
     accessory: item[];
     effect: item[];
+    background: item[];
 };
 export type SelectData = {
     accessory: string;
@@ -26,4 +27,5 @@ export type SelectData = {
     body: string;
     legs: string;
     effect: string;
+    background: string;
 };

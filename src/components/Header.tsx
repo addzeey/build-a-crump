@@ -15,7 +15,7 @@ export const Header = () => {
                     user ? (
                         <Link className="btn primary-btn bounce" to="/auth">Account</Link>
                     ) : (
-                        <button onClick={() => setShowAuth(true)} className="btn twitch-btn" >Login with Twitch</button>
+                        <button onClick={() => setShowAuth(true)} className="btn twitch-btn" >Login</button>
                     )
                 }
             </nav>

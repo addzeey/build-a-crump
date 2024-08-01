@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSmile, faPerson, faScissors, faHand, faRing, faSocks, faCircleXmark, faSkull, faWandSparkles } from '@fortawesome/free-solid-svg-icons';
+import { faSmile, faPerson, faScissors, faHand, faRing, faSocks, faCircleXmark, faSkull, faWandSparkles, faImage } from '@fortawesome/free-solid-svg-icons';
 import { item, CrumpData, SelectData} from '../types';
 import { Tooltip } from "react-tooltip";
 import { useUserQuery } from "../authentication";
 import { Modal } from "./Modal";
-import { crumpHair, crumpBody, crumpFace, crumpArms, crumpLegs, crumpHead, crumpAccs, crumpEffect } from "../data";
+import { crumpHair, crumpBody, crumpFace, crumpArms, crumpLegs, crumpHead, crumpAccs, crumpEffect, crumpBackground } from "../data";
 
 type UpdateCrump = (data: SelectData) => void;
 export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump }) => {
@@ -22,12 +22,13 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
     const [selectedAcc, setSelectedAcc] = useState<string>("");
     const [selectedAcc2, setSelectedAcc2] = useState<string>("");
     const [selectedEffect, setSelectedEffect] = useState<string>("");
+    const [selectedBackground, setSelectedBackground] = useState<string>("");
 
 
     useEffect(() => {
         if(user && user.crump && saveLoaded === false) {
             // map over crump data and set the state for each part
-            const { accessory, hair, expression, head, accessory2, arms, body, legs, effect } = JSON.parse(user.crump);
+            const { accessory, hair, expression, head, accessory2, arms, body, legs, effect, background } = JSON.parse(user.crump);
             setSelectedHair(hair);
             setSelectedBody(body);
             setSelectedExpression(expression);
@@ -38,6 +39,7 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
             setSelectedLegs(legs);
             setSelectedEffect(effect);
             setSaveLoaded(true);
+            setSelectedBackground(background);
         } else {
             updateCrump({
                 accessory: selectedAcc  || "",
@@ -49,12 +51,12 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
                 body: selectedBody || "body-1",
                 legs: selectedLegs || "legs-1",
                 effect: selectedEffect  || "",
+                background: selectedBackground || "default"
             });
         }
 
-    }, [selectedHair, selectedBody, selectedExpression, selectedArm, selectedLegs, selectedHead, selectedAcc, selectedEffect, selectedAcc2, user]);
+    }, [selectedHair, selectedBody, selectedExpression, selectedArm, selectedLegs, selectedHead, selectedAcc, selectedEffect, selectedAcc2, selectedBackground, user]);
     const handleSelection = (type: string, itemId: string) => {
-        console.log(itemId);
         switch (type) {
             case "hair":
                 setSelectedHair(itemId);
@@ -83,6 +85,9 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
             case "accessory2":
                 setSelectedAcc2(itemId);
                 break;
+            case "background":
+                setSelectedBackground(itemId);
+                break;
             default:
                 break;
         }
@@ -91,8 +96,6 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
 
 
     const toggleSelectionMenu = (type: string, data: any) => {
-        console.log(data);
-
         if (selectMenu === null) {
             setMenuType(type);
             setSelectMenu(data);
@@ -118,6 +121,10 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
                         className="control bounce" onClick={() => toggleSelectionMenu("head", crumpHead)}>
                         <FontAwesomeIcon className="icon" icon={faSkull} />
                     </li>
+                    <li data-tooltip-id="build-tooltip" data-tooltip-content="Arms" data-tooltip-place="left" 
+                        className="control bounce" onClick={() => toggleSelectionMenu("arms", crumpArms)}>
+                        <FontAwesomeIcon className="icon" icon={faHand} />
+                    </li>
                     <li data-tooltip-id="build-tooltip" data-tooltip-content="Body" data-tooltip-place="right" 
                         className="control bounce" onClick={() => toggleSelectionMenu("body", crumpBody)}>
                         <FontAwesomeIcon className="icon" icon={faPerson} />
@@ -134,10 +141,6 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
                         className="control bounce" onClick={() => toggleSelectionMenu("accessory2", crumpAccs)}>
                         <FontAwesomeIcon className="icon" icon={faRing} />
                     </li>
-                    <li data-tooltip-id="build-tooltip" data-tooltip-content="Arms" data-tooltip-place="left" 
-                        className="control bounce" onClick={() => toggleSelectionMenu("arms", crumpArms)}>
-                        <FontAwesomeIcon className="icon" icon={faHand} />
-                    </li>
                     <li data-tooltip-id="build-tooltip" data-tooltip-content="Legs" data-tooltip-place="left" 
                         className="control bounce" onClick={() => toggleSelectionMenu("legs", crumpLegs)}>
                         <FontAwesomeIcon className="icon" icon={faSocks} />
@@ -145,6 +148,10 @@ export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump })
                     <li data-tooltip-id="build-tooltip" data-tooltip-content="Effects" data-tooltip-place="left" 
                         className="control bounce" onClick={() => toggleSelectionMenu("effect", crumpEffect)}>
                         <FontAwesomeIcon className="icon" icon={faWandSparkles} />
+                    </li>
+                    <li data-tooltip-id="build-tooltip" data-tooltip-content="Background" data-tooltip-place="left" 
+                        className="control bounce" onClick={() => toggleSelectionMenu("background", crumpBackground)}>
+                        <FontAwesomeIcon className="icon" icon={faImage} />
                     </li>
                 </ul>
             </div>

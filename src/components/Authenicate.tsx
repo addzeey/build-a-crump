@@ -11,11 +11,6 @@ export const Authenicate = () => {
         },
     });
     const { data: user, error, isLoading } = useUserQuery();
-    useEffect(() => {
-        if (user) {
-            console.log(user);
-        }
-    }, [user]);
     return (
         <div className="login-wrap">
             {

@@ -1,10 +1,8 @@
 import { LegacyRef, useEffect, useState, useRef, forwardRef } from "react";
 import { useUserQuery } from "../authentication";
-import { UserMetadata } from "@supabase/supabase-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { SelectData } from "../types";
-import { Modal } from "./Modal";
 
 type Props = {
     data: SelectData;
@@ -21,7 +19,8 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
         arms: "arms-1",
         body: "body-1",
         legs: "legs-1",
-        effect: "effect-1"
+        effect: "effect-1",
+        background: "background-1",
     });
     useEffect(() => {
         const { data } = props;
@@ -35,7 +34,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
     }
     return (
         <div className="crump">
-            <div ref={ref} className="crump-export">
+            <div ref={ref} className={`crump-export crump-bg`} style={{backgroundImage: `url(/assets/images/crumps/background/${crumpBuild.background}.png)`}}>
             <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
             <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
             <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
@@ -47,18 +46,18 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
             <img src={`/assets/images/crumps/body/${crumpBuild.body}.png`} alt="" className="crump-part base-crump" />
             <img src={`/assets/images/crumps/legs/${crumpBuild.legs}.png`} alt="" className="crump-part legs-crump" />
             {
-                user ? (
                     <div className="nameplate">
                         {
                             customName ? (
                                 <span>{customName}</span>
-                            ) : (
+                            ) : user && user.nickname ? (
                                 <span>{user.nickname}</span>
+                            ) : (
+                                <span>Click to change</span>
                             )
                         }
                         <FontAwesomeIcon className="name-change" onClick={changeName} icon={faPenToSquare} />
                     </div>
-                ) : null
             }
             </div>
         </div>

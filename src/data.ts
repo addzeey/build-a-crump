@@ -303,3 +303,13 @@ export const crumpEffect: item[] = [
         block: ""
     },
 ]
+export const crumpBackground: item[] = [
+    {name: "default", id: "default", type: "background", icon: "", block: ""},
+    {name: "confetti", id: "background-1", type: "background", icon: "", block: ""},
+    {name: "fire", id: "background-2", type: "background", icon: "", block: ""},
+    {name: "anime lines", id: "background-3", type: "background", icon: "", block: ""},
+    {name: "baloons", id: "background-4", type: "background", icon: "", block: ""},
+    {name: "stars", id: "background-5", type: "background", icon: "", block: ""},
+    {name: "cats", id: "background-6", type: "background", icon: "", block: ""},
+    {name: "gradient", id: "background-7", type: "background", icon: "", block: ""},
+]
