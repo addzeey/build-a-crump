@@ -46,7 +46,11 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
                     <img src={`/assets/images/crumps/accessory/${crumpBuild.accessory}.png`} alt="" className="crump-part acc-crump" />
                 ) : null
             }
-            <img src={`/assets/images/crumps/hair/${crumpBuild.hair}.png`} alt="" className="crump-part hair-crump" />
+            {
+                crumpBuild.hair != "bald" && crumpBuild.hair != "" ? (
+                    <img src={`/assets/images/crumps/hair/${crumpBuild.hair}.png`} alt="" className="crump-part hair-crump" />
+                ) : null
+            }
             <img src={`/assets/images/crumps/face/${crumpBuild.expression}.png`} alt="" className="crump-part face-crump" />
             <img src={`/assets/images/crumps/head/${crumpBuild.head}.png`} alt="" className="crump-part head-crump" />
             {

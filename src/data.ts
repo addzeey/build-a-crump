@@ -2,6 +2,10 @@ import { item } from "./types";
 
 export const crumpHair: item[] = [
     {
+        name: "bald", id: "bald", type: "hair", icon: "",
+        block: ""
+    },
+    {
         name: "default", id: "hair-1", type: "hair", icon: "",
         block: ""
     },

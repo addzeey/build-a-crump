@@ -194,8 +194,9 @@
     justify-content: center;
     position: relative;
     .crump-bg {
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
+        background-position: center center;
     }
     .crump-export {
         height: 100%;
