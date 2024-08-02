@@ -62,7 +62,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
             <img src={`/assets/images/crumps/body/${crumpBuild.body}.png`} alt="" className="crump-part base-crump" />
             <img src={`/assets/images/crumps/legs/${crumpBuild.legs}.png`} alt="" className="crump-part legs-crump" />
             {
-                    <div className="nameplate">
+                    <div onClick={changeName} className="nameplate">
                         {
                             customName ? (
                                 <span>{customName}</span>
@@ -72,7 +72,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
                                 <span>Click to change</span>
                             )
                         }
-                        <FontAwesomeIcon className="name-change" onClick={changeName} icon={faPenToSquare} />
+                        <FontAwesomeIcon className="name-change" icon={faPenToSquare} />
                     </div>
             }
             </div>

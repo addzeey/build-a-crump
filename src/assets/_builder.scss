@@ -361,9 +361,6 @@
             justify-content: flex-start;
             gap: 10px;
 
-            #build-tooltip {
-                z-index: 99;
-            }
 
             .select-menu {
                 max-width: 90%;
@@ -573,5 +570,24 @@
     }
     .debug {
         display: none;
+    }
+}
+
+#build-tooltip {
+    z-index: 99;
+}
+@media only screen and (max-height: 950px) {
+
+    .build-wrap {
+        .center-build {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .nameplate {
+                font-size: 1.8rem;
+            }
+        }
     }
 }
