@@ -576,7 +576,7 @@
 #build-tooltip {
     z-index: 99;
 }
-@media only screen and (max-height: 950px) {
+@media only screen and (max-height: 950px) and (min-width: 600px) {
 
     .build-wrap {
         .center-build {

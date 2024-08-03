@@ -8,7 +8,8 @@ import { Modal } from "./Modal";
 import { crumpHair, crumpBody, crumpFace, crumpArms, crumpLegs, crumpHead, crumpAccs, crumpEffect, crumpBackground } from "../data";
 
 type UpdateCrump = (data: SelectData) => void;
-export const Overlay: React.FC<{ updateCrump: UpdateCrump }> = ({ updateCrump }) => {
+type setShowNameplate = (value: boolean) => void;
+export const Overlay: React.FC<{ updateCrump: UpdateCrump, setShowNameplate: setShowNameplate }> = ({ updateCrump, setShowNameplate }) => {
     const [saveLoaded, setSaveLoaded] = useState<boolean>(false);
     const {data: user, error: userError, isLoading: userLoading} = useUserQuery();
     const [selectMenu, setSelectMenu] = useState<CrumpData | null>(null);

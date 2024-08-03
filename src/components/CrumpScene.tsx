@@ -6,8 +6,9 @@ import { SelectData } from "../types";
 
 type Props = {
     data: SelectData;
+    showNameplate: boolean;
 };
-export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : LegacyRef<HTMLDivElement>) {
+export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref: LegacyRef<HTMLDivElement>) {
     const { data: user, error, isLoading } = useUserQuery();
     const [customName, setCustomName] = useState<string>("");
     const [crumpBuild, setCrumpBuild] = useState<SelectData>({
@@ -35,7 +36,12 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
     return (
         <div className="crump">
             <div ref={ref} className={`crump-export crump-bg`} style={{backgroundImage: `url(/assets/images/crumps/background/${crumpBuild.background}.png)`}}>
-            <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
+            {
+                props.showNameplate ? (
+                    <img src={`/assets/images/crumps/nameplates/shelve_nplate.png`} alt="" className="nameplate-image" />
+                ) : null
+            }
+            
             {
                 crumpBuild.effect != "default" && crumpBuild.effect != "" ? (
                     <img src={`/assets/images/crumps/effect/${crumpBuild.effect}.png`} alt="" className="crump-part effect-crump" />
@@ -62,6 +68,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
             <img src={`/assets/images/crumps/body/${crumpBuild.body}.png`} alt="" className="crump-part base-crump" />
             <img src={`/assets/images/crumps/legs/${crumpBuild.legs}.png`} alt="" className="crump-part legs-crump" />
             {
+                props.showNameplate ? (
                     <div onClick={changeName} className="nameplate">
                         {
                             customName ? (
@@ -74,6 +81,7 @@ export const CrumpScene = forwardRef(function CrumpScene(props: Props, ref : Leg
                         }
                         <FontAwesomeIcon className="name-change" icon={faPenToSquare} />
                     </div>
+                ) : null
             }
             </div>
         </div>
