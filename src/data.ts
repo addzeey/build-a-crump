@@ -302,10 +302,6 @@ export const crumpEffect: item[] = [
         name: "sweat", id: "effect-12", type: "effect", icon: "",
         block: ""
     },
-    {
-        name: "wistera", id: "effect-13", type: "effect", icon: "",
-        block: ""
-    },
 ]
 export const crumpBackground: item[] = [
     {name: "default", id: "default", type: "background", icon: "", block: ""},
