@@ -8,8 +8,6 @@ export const UserCard = (props :UserMetadata) => {
     const { data, error, isLoading } = useUserQuery();
     useEffect(() => {
         if(data) {
-          console.log(data);
-          
           setUser(data);
         }
     }, [data]);
